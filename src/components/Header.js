@@ -1,29 +1,32 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
 import Logo from "../assests/logo.png";
-
+import { Link, NavLink } from "react-router-dom";
 export const Header = () => {
-  const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
+  const [isMobileMenuVisible, setIsMobileViewVisible] = useState(false);
+
   const activeClasses =
-    "block py-2 px-3 text-primary-800 hover:text-primary-1000 rounded";
-  const inactiveClasses = "block py-2 px-3 text-white hover:text-primary-800";
+    "block py-2 px-3 text-primary-800 hover:text-primary-100 rounded";
+  const inactiveClasses =
+    "block py-2 px-3 text-white hover:text-primary-800 rounded";
 
   return (
-    <nav className="bg-slate-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <nav className="bg-slate-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src={Logo} alt="film fiesta logo" className="h-12" />
+          <img src={Logo} className="h-12" alt="MovieMaze Logo" />
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          {/* Mode Switcher Button */}
           <button
             type="button"
             data-collapse-toggle="navbar-search"
             aria-controls="navbar-search"
             aria-expanded="false"
-            className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1"
+            onClick={() => setIsMobileViewVisible(!isMobileMenuVisible)}
+            className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none  rounded-lg text-sm p-2.5 me-1"
           >
             <svg
               className="w-5 h-5"
@@ -64,18 +67,19 @@ export const Header = () => {
             <input
               type="text"
               id="search-navbar"
-              className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Search..."
             />
           </div>
           <button
             data-collapse-toggle="navbar-search"
             type="button"
-            onClick={() => setIsMobileMenuVisible(!isMobileMenuVisible)}
+            onClick={() => setIsMobileViewVisible(!isMobileMenuVisible)}
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700 "
-            aria-controls="navbar-search"
+            aria-controls="navbar-sticky"
             aria-expanded="false"
           >
+            <span className="sr-only">Open main menu</span>
             <svg
               className="w-5 h-5"
               aria-hidden="true"
@@ -120,11 +124,11 @@ export const Header = () => {
             <input
               type="text"
               id="search-navbar"
-              className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-slate-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Search..."
             />
           </div>
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 text-white">
+          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 text-white">
             <li>
               <NavLink
                 to="/"
@@ -138,22 +142,22 @@ export const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/movies/popular"
+                to="/movies"
                 className={({ isActive }) =>
                   isActive ? activeClasses : inactiveClasses
                 }
               >
-                Popular
+                Movies
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/movies/trending"
+                to="/movies/top-rated"
                 className={({ isActive }) =>
                   isActive ? activeClasses : inactiveClasses
                 }
               >
-                Top-Rated
+                Top Rated
               </NavLink>
             </li>
             <li>
