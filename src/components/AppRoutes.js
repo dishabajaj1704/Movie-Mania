@@ -14,6 +14,6 @@ export const AppRoutes = () => {
         <Route path="/movies/:id" element={MoviePage} />
         <Route path="*" element={PageNotFound} />
       </Routes>
-    </>mm
+    </>
   );
 };
