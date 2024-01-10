@@ -63,7 +63,7 @@ export const Header = () => {
   });
 
   return (
-    <nav className="bg-slate-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <nav className="bg-slate-900 fixed w-full z-20 top-0 start-0 border-b border-gray-700 ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"
