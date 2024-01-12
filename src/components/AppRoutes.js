@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { MovieDetailsPage } from "../pages/MovieDetailsPage";
 import { MoviePage } from "../pages/MoviePage";
 import { PageNotFound } from "../pages/PageNotFound";
+import { SearchPage } from "../pages/SearchPage";
 
 export const AppRoutes = () => {
   return (
@@ -22,6 +23,10 @@ export const AppRoutes = () => {
           element={<MoviePage apiPath={"movie/upcoming"} />}
         />
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
+        <Route
+          path="/movies/search"
+          element={<SearchPage apiPath={"search/movie"} />}
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
