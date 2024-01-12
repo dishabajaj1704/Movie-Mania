@@ -4,14 +4,13 @@ import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
   const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
+  const imageURL = movie.poster_path
+    ? `${BASE_IMAGE_URL}${movie.poster_path}`
+    : "https://placehold.co/382x573?text=No+Image";
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2">
       <Link to={`/movies/${movie.id}`}>
-        <img
-          className="rounded-t-lg"
-          src={`${BASE_IMAGE_URL}${movie.poster_path}`}
-          alt=""
-        />
+        <img className="rounded-t-lg" src={`${imageURL}`} alt="" />
       </Link>
       <div className="p-5">
         <Link to={`/movies/${movie.id}`}>
