@@ -11,6 +11,7 @@ const useFetch = (initialUrl) => {
     const abortController = new AbortController();
 
     const fetchData = async () => {
+      if (!url) return;
       console.log("Fetching data");
       setIsLoading(true);
       try {
