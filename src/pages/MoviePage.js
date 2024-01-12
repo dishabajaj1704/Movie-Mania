@@ -3,11 +3,11 @@ import { MovieCard } from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
 
 export const MoviePage = ({ apiPath }) => {
-  const BASE_API = "https://api.themoviedb.org/3/";
+  const BASE_API = process.env.REACT_APP_API_URL;
   const { data: movies, error, isLoading, setUrl } = useFetch();
   useEffect(() => {
-    setUrl(`${BASE_API}${apiPath}?api_key=79ad8f4a680df3224a502863cd4eebfb`);
-  },[apiPath]);
+    setUrl(`${BASE_API}${apiPath}?api_key=${process.env.REACT_APP_API_KEY}`);
+  }, [apiPath]);
   return (
     <main>
       <div className="flex flex-wrap justify-start">
