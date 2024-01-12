@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { MovieCard } from "../components/MovieCard";
 import { MovieCardSkeleton } from "../components/MovieCardSkeleton";
+import { useDynamicTitle } from "../hooks/useDynamicTitle";
 import useFetch from "../hooks/useFetch";
 
 export const SearchPage = ({ apiPath }) => {
@@ -10,7 +11,7 @@ export const SearchPage = ({ apiPath }) => {
   const BASE_API = process.env.REACT_APP_API_URL;
   const API_KEY = process.env.REACT_APP_API_KEY;
   const { data: movies, isLoading, error, setUrl } = useFetch();
-
+  useDynamicTitle(`Search: ${queryTerm}`);
   useEffect(() => {
     const URL = `${BASE_API}${apiPath}?query=${queryTerm}&api_key=${API_KEY}`;
     setUrl(URL);

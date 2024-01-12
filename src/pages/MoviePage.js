@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { MovieCard } from "../components/MovieCard";
 import { MovieCardSkeleton } from "../components/MovieCardSkeleton";
+import { useDynamicTitle } from "../hooks/useDynamicTitle";
 import useFetch from "../hooks/useFetch";
 
-export const MoviePage = ({ apiPath }) => {
+export const MoviePage = ({ apiPath, title }) => {
+  useDynamicTitle(title);
   const BASE_API = process.env.REACT_APP_API_URL;
   const { data: movies, error, isLoading, setUrl } = useFetch();
   useEffect(() => {

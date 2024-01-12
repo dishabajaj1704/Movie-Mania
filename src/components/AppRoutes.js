@@ -9,18 +9,35 @@ export const AppRoutes = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MoviePage apiPath={"movie/now_playing"} />} />
+        <Route
+          path="/"
+          element={
+            <MoviePage
+              apiPath={"movie/now_playing"}
+              title="Now Playing|FilmFiesta"
+            />
+          }
+        />
         <Route
           path="/movies/top-rated"
-          element={<MoviePage apiPath={"movie/top_rated"} />}
+          element={
+            <MoviePage
+              apiPath={"movie/top_rated"}
+              title="Now Playing|FilmFiesta"
+            />
+          }
         />
         <Route
           path="/movies/popular"
-          element={<MoviePage apiPath={"movie/popular"} />}
+          element={
+            <MoviePage apiPath={"movie/popular"} title="Popular|FilmFiesta" />
+          }
         />
         <Route
           path="/movies/upcoming"
-          element={<MoviePage apiPath={"movie/upcoming"} />}
+          element={
+            <MoviePage apiPath={"movie/upcoming"} title="Upcoming|FilmFiesta" />
+          }
         />
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
         <Route
